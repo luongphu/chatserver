@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Volumes/Work/angular-websocket-sample/play-scala-starter-example/app/Module.scala:27:18: not found: type ChatRoomRepository[0m
+[0m[[0m[31merror[0m] [0m[0m    bind(classOf[ChatRoomRepository]).to(classOf[infrastructure.chat.ChatRoomClient])[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
