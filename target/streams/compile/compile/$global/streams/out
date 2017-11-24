@@ -1,4 +1,7 @@
-[0m[[0m[31merror[0m] [0m[0m/Volumes/Work/angular-websocket-sample/play-scala-starter-example/app/Module.scala:27:18: not found: type ChatRoomRepository[0m
-[0m[[0m[31merror[0m] [0m[0m    bind(classOf[ChatRoomRepository]).to(classOf[infrastructure.chat.ChatRoomClient])[0m
-[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Volumes/Work/angular-websocket-sample/play-scala-starter-example/app/controllers/chat/ChatMessageConverters.scala:12:37: overloaded method value read with alternatives:[0m
+[0m[[0m[31merror[0m] [0m[0m  (t: String)play.api.libs.json.Reads[String] <and>[0m
+[0m[[0m[31merror[0m] [0m[0m  (implicit r: play.api.libs.json.Reads[String])play.api.libs.json.Reads[String][0m
+[0m[[0m[31merror[0m] [0m[0m cannot be applied to (play.api.libs.json.JsPath)[0m
+[0m[[0m[31merror[0m] [0m[0m          (JsPath \ "createAt").read[String][0m
+[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

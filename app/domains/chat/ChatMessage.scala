@@ -2,11 +2,11 @@ package domains.chat
 
 sealed trait ChatMessage
 
-case class Join(userName: String) extends ChatMessage
+case class Join(userId: String) extends ChatMessage
 
-case class Leave(userName: String) extends ChatMessage
+case class Leave(userId: String) extends ChatMessage
 
-case class Talk(userName: String, text: String) extends ChatMessage
+case class Talk(userId: String, text: String, createAt: String, action: String) extends ChatMessage
 
 
 

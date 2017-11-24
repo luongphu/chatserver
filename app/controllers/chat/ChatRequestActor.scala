@@ -7,24 +7,24 @@ import play.api.libs.json.JsValue
 /**
  * Convert input String to chat Message object.
  */
-class ChatRequestActor(out: ActorRef, userName: String) extends Actor {
+class ChatRequestActor(out: ActorRef, userId: String) extends Actor {
 
   import ChatMessageConverters._
 
   override def receive: Receive = {
     case msg: JsValue =>
       val chat = msg.as[Chat]
-      out ! Talk(chat.userName, chat.text)
+      out ! Talk(chat.userId, chat.text, chat.createAt, chat.action)
   }
 
-  override def preStart(): Unit = out ! Join(userName)
+  override def preStart(): Unit = out ! Join(userId)
 
   override def postStop(): Unit = {
-    out ! Leave(userName)
+    out ! Leave(userId)
     out ! PoisonPill
   }
 }
 
 object ChatRequestActor {
-  def props(out: ActorRef, userName: String): Props = Props(new ChatRequestActor(out, userName))
+  def props(out: ActorRef, userId: String): Props = Props(new ChatRequestActor(out, userId))
 }

@@ -7,15 +7,17 @@ import play.api.libs.json._
 object ChatMessageConverters {
 
   implicit val ChatMessageReads: Reads[Chat] = (
-      (JsPath \ "userName").read[String] and
+          (JsPath \ "userId").read[String] and
           (JsPath \ "text").read[String] and
-          Reads.pure[Boolean](false)
+          (JsPath \ "createAt").read[String] and
+          (JsPath \ "action").read[String]
       ) (Chat)
 
   implicit val ChatMessageWrites: Writes[Chat] = (
-      (JsPath \ "userName").write[String] and
+          (JsPath \ "userId").write[String] and
           (JsPath \ "text").write[String] and
-          (JsPath \ "systemFlag").write[Boolean]
+          (JsPath \ "createAt").write[String] and
+          (JsPath \ "action").write[String]
       ) (unlift(Chat.unapply))
 
 }

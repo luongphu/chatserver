@@ -23,11 +23,11 @@ class ChatController @Inject()(
   def start(roomId: String) = WebSocket.accept[JsValue, JsValue] { request =>
 
 
-    val userName = request.queryString("user_name").headOption.getOrElse("anon")
+    val userId = request.queryString("user_id").headOption.getOrElse("anon")
 
-    val userInput: Flow[JsValue, ChatMessage, _] = ActorFlow.actorRef[JsValue, ChatMessage](out => ChatRequestActor.props(out, userName))
-    val room = streamChatService.start(roomId, userName)
-    val userOutPut: Flow[ChatMessage, JsValue, _] = ActorFlow.actorRef[ChatMessage, JsValue](out => ChatResponseActor.props(out,userName))
+    val userInput: Flow[JsValue, ChatMessage, _] = ActorFlow.actorRef[JsValue, ChatMessage](out => ChatRequestActor.props(out, userId))
+    val room = streamChatService.start(roomId, userId)
+    val userOutPut: Flow[ChatMessage, JsValue, _] = ActorFlow.actorRef[ChatMessage, JsValue](out => ChatResponseActor.props(out,userId))
 
     userInput.viaMat(room.bus)(Keep.right).viaMat(userOutPut)(Keep.right)
   }

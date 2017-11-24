@@ -22,7 +22,7 @@ class ChatRoomClient @Inject()(
 
   import ChatRoomClient._
 
-  override def chatRoom(roomId: String, userName: String): ChatRoom = synchronized {
+  override def chatRoom(roomId: String, userId: String): ChatRoom = synchronized {
     roomPool.get.get(roomId) match {
       case Some(chatRoom) =>
         chatRoom

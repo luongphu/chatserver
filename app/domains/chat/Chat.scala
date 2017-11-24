@@ -1,3 +1,3 @@
 package domains.chat
 
-case class Chat(userName: String, text: String, systemFlag: Boolean)
+case class Chat(userId: String, text: String, createAt: String, action: String)
